@@ -60,19 +60,9 @@
       background: var(--gold-light); color: var(--gold-dark);
     }
 
-    /* ── QUESTION MARKS BG ── */
-    .qbg {
-      position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
-    }
-    .qbg span {
-      position: absolute; font-weight: 800; opacity: .15; color: var(--gray);
-      user-select: none; font-family: 'Inter', sans-serif;
-    }
-    .qbg span.g { color: var(--gold); opacity: .2; }
-
     /* ── HERO ── */
     .hero {
-      position: relative; min-height: 92vh;
+      position: relative; min-height: 85vh;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center; padding: 80px 24px 60px;
@@ -161,18 +151,27 @@
     .concept-text p {
       color: var(--muted); line-height: 1.8; font-size: 1rem; margin-bottom: 16px;
     }
+    
+    /* Styles pour la nouvelle image insérée */
+    .concept-image-wrapper {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+      border: 1px solid var(--border);
+      display: flex;
+    }
+    .concept-image-wrapper img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
     .concept-visual {
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 40px;
       display: flex; flex-direction: column; gap: 20px;
       box-shadow: 0 4px 24px rgba(0,0,0,.06);
-      position: relative; overflow: hidden;
-    }
-    .concept-visual::before {
-      content: '?'; position: absolute; right: -10px; bottom: -20px;
-      font-family: 'Playfair Display', serif;
-      font-size: 12rem; font-weight: 900; color: var(--gold-light);
-      line-height: 1; pointer-events: none;
     }
     .fact { display: flex; align-items: flex-start; gap: 16px; }
     .fact-icon {
@@ -238,19 +237,26 @@
       border-radius: 8px; display: flex; align-items: center;
       justify-content: center; font-size: .9rem; flex-shrink: 0;
     }
-    /* Styles pour l'image intégrée */
+    .lieu-detail a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .lieu-detail a:hover {
+      text-decoration: underline;
+    }
     .lieu-image-wrapper {
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid var(--border);
       box-shadow: 0 4px 12px rgba(0,0,0,.08);
-      max-height: 400px; /* Limiter la hauteur pour éviter les images trop longues */
+      max-height: 400px;
       display: flex;
+      background: var(--gray-light);
     }
     .lieu-image-wrapper img {
       width: 100%;
-      height: auto;
-      object-fit: contain; /* Assurer que l'image entière est visible sans être étirée */
+      height: 100%;
+      object-fit: cover;
     }
 
     /* ── TEASER ── */
@@ -301,25 +307,6 @@
 </nav>
 
 <section class="hero">
-  <div class="qbg" aria-hidden="true">
-    <span style="top:5%;left:3%;font-size:1.5rem;">?</span>
-    <span class="g" style="top:8%;left:15%;font-size:2.5rem;">?</span>
-    <span style="top:4%;left:35%;font-size:1.2rem;">?</span>
-    <span style="top:6%;left:55%;font-size:1.8rem;">?</span>
-    <span class="g" style="top:12%;left:72%;font-size:2rem;">?</span>
-    <span style="top:3%;left:88%;font-size:1rem;">?</span>
-    <span style="top:22%;left:1%;font-size:1.3rem;">?</span>
-    <span class="g" style="top:35%;left:5%;font-size:3rem;">?</span>
-    <span style="top:40%;left:91%;font-size:2.2rem;">?</span>
-    <span class="g" style="top:55%;left:94%;font-size:1.5rem;">?</span>
-    <span style="top:65%;left:2%;font-size:2rem;">?</span>
-    <span class="g" style="top:72%;left:88%;font-size:1.8rem;">?</span>
-    <span style="top:80%;left:10%;font-size:1.2rem;">?</span>
-    <span style="top:85%;left:50%;font-size:1rem;">?</span>
-    <span class="g" style="top:90%;left:78%;font-size:1.4rem;">?</span>
-    <span style="top:95%;left:30%;font-size:1.1rem;">?</span>
-  </div>
-
   <div class="hero-eyebrow">✦ Exposition — Édition 2027</div>
   <h1>Flop<span class="gold"> ou</span><br/>pas <span class="gold">?</span></h1>
   <p class="hero-sub">"Et si les pires inventions étaient les plus intéressantes ?"</p>
@@ -340,9 +327,14 @@
       <h2 class="section-title">Qu'est-ce qu'un <span>flop</span> ?</h2>
       <p>Chaque grande invention cache derrière elle une longue série d'échecs. Des prototypes ratés, des idées abandonnées, des projets moqués par leurs contemporains — et pourtant essentiels au progrès.</p>
       <p>L'exposition <strong>« Flop ou pas ? »</strong> propose de renverser le regard : et si ce que l'on appelle un échec était en réalité la condition nécessaire de toute réussite ? À travers des objets insolites, des archives inédites et des installations interactives, le musée invite ses visiteurs à reconsidérer leur rapport à l'erreur.</p>
-      <p>Pour l'édition 2027, le Musée des Arts et Métiers ouvre ses réserves et ses coulisses pour révéler les inventions jamais montrées au public — les vrais flops de l'histoire des sciences et techniques.</p>
-      <a href="#programme" class="btn-primary" style="margin-top:8px; display:inline-block;">Voir le programme 2027</a>
+      
+      <div class="concept-image-wrapper" style="margin-top: 24px; margin-bottom: 24px;">
+        <img src="image_b50eed.png" alt="Exposition Flop ou pas : Table de ping-pong ondulée"/>
+      </div>
+      
+      <a href="#programme" class="btn-primary" style="display:inline-block;">Voir le programme 2027</a>
     </div>
+    
     <div class="concept-visual">
       <div class="fact">
         <div class="fact-icon">🔬</div>
@@ -477,7 +469,7 @@
       </div>
     </div>
     <div class="lieu-image-wrapper">
-      <img src="image_0.png" alt="Informations pratiques pour l'exposition Flop ou pas au Musée des Arts et Métiers"/>
+      <img src="image_b49008.png" alt="Informations pratiques pour l'exposition Flop ou pas au Musée des Arts et Métiers"/>
     </div>
   </div>
 </div>
